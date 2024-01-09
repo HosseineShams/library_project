@@ -1,0 +1,588 @@
+{
+	"info": {
+		"_postman_id": "a2759221-1022-4fb8-aba2-f8ed5a808d79",
+		"name": "library_project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "25778869"
+	},
+	"item": [
+		{
+			"name": "User Registration",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"newuser\",\r\n    \"password\": \"password123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/library/register/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"register",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Obtain JWT Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"newuser\",\r\n    \"password\": \"password123\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/token/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Refresh JWT Token",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"refresh\": \"<your-refresh-token>\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/token/refresh/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"token",
+						"refresh",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Books",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODMzMjk3LCJpYXQiOjE3MDQ4MzE0NzgsImp0aSI6ImZjMWI0N2Q2MjU1MjQ0NTE4NjhjMjBkOTEyZjhkN2VlIiwidXNlcl9pZCI6Mn0.C1SumkaWXbNKurTK9DzZtVVL-JZd_tgzt1GN_ujtdKM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/library/books/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODI0ODIzLCJpYXQiOjE3MDQ4MjMwMjMsImp0aSI6IjIyOWU1NTUyMGJkNzQxMTk5OTJlYzg5ZjJjM2E0ZTczIiwidXNlcl9pZCI6Mn0.uPSZoHmsh-YcFhkE-ZHh_vojb2n5RLWFak98PajrWUw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authentication",
+						"value": "Bear eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODI0NzI0LCJpYXQiOjE3MDQ4MjI5MjQsImp0aSI6IjlkNDVkOWE5NzljNDRlNTBiZGQ1YjBlN2QxYjczODc3IiwidXNlcl9pZCI6Mn0.okIsHUXvpxzhhbmN8I_v-AHaBvntIjjB_QaZgK0S44g",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Sample Book\",\r\n    \"genre\": \"Fiction\",\r\n    \"publication_date\": \"2024-01-01\",\r\n    \"availability_status\": true,\r\n    \"authors\": [1, 2]  // Assuming authors with IDs 1 and 2 exist\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/library/books/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"books",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODI1NDEwLCJpYXQiOjE3MDQ4MjMzODUsImp0aSI6IjI4NWExYjgxNDg5NjQwYmRiY2NmZjgzZTBmZDdkYzc3IiwidXNlcl9pZCI6Mn0.OaeNcqQ2EU7Zduj-w8Bse5AJaE9iMfag22TLRnBr6EU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"Updated Book Title\",\r\n    \"genre\": \"Non-Fiction\",\r\n    \"availability_status\": false,\r\n    \"publication_date\": \"2024-01-02\",\r\n    \"authors\": [1, 2]  // Replace 1, 2 with actual author IDs\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/library/books/{id}/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"books",
+						"{id}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve a Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODMxMDc1LCJpYXQiOjE3MDQ4MjMzODUsImp0aSI6IjY2MmI0NDEyZTQzZjRhYzA5NWFjMjM0MWM5ZTVlOGI0IiwidXNlcl9pZCI6Mn0.L-1QAefGT4F3fCb1QNYXTvXoUKX3xy0K2dCLLjmzjL0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/library/books/{id}/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"books",
+						"{id}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Book",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODMxMDc1LCJpYXQiOjE3MDQ4MjMzODUsImp0aSI6IjY2MmI0NDEyZTQzZjRhYzA5NWFjMjM0MWM5ZTVlOGI0IiwidXNlcl9pZCI6Mn0.L-1QAefGT4F3fCb1QNYXTvXoUKX3xy0K2dCLLjmzjL0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/library/books/{id}/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"books",
+						"{id}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Authors",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODMzMjk3LCJpYXQiOjE3MDQ4MzE0NzgsImp0aSI6ImZjMWI0N2Q2MjU1MjQ0NTE4NjhjMjBkOTEyZjhkN2VlIiwidXNlcl9pZCI6Mn0.C1SumkaWXbNKurTK9DzZtVVL-JZd_tgzt1GN_ujtdKM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/library/authors/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"authors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add an Author",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODMzMjk3LCJpYXQiOjE3MDQ4MzE0NzgsImp0aSI6ImZjMWI0N2Q2MjU1MjQ0NTE4NjhjMjBkOTEyZjhkN2VlIiwidXNlcl9pZCI6Mn0.C1SumkaWXbNKurTK9DzZtVVL-JZd_tgzt1GN_ujtdKM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Author Name3\",\r\n    \"birth_date\": \"1980-01-01\",\r\n    \"bio\": \"A brief bio of the author.\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/library/authors/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"authors",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update an Author",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODI5NTAwLCJpYXQiOjE3MDQ4MjMzODUsImp0aSI6IjM0NjhlNGE2ZGZkODRjOTY5YzZkYzVhMzkxMWYxNWQ1IiwidXNlcl9pZCI6Mn0.Fws1Pi7eoKZeiHEKDNxQv4VY42Leb0WOTl4ms_oN75M",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Updated Author Name\",\r\n    \"bio\": \"Updated bio of the author.\",\r\n    \"birth_date\": \"1980-01-02\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/library/authors/{id}/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"authors",
+						"{id}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Retrieve an Author",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODMxMDc1LCJpYXQiOjE3MDQ4MjMzODUsImp0aSI6IjY2MmI0NDEyZTQzZjRhYzA5NWFjMjM0MWM5ZTVlOGI0IiwidXNlcl9pZCI6Mn0.L-1QAefGT4F3fCb1QNYXTvXoUKX3xy0K2dCLLjmzjL0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/library/authors/{id}/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"authors",
+						"{id}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete an Author",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODMxMDc1LCJpYXQiOjE3MDQ4MjMzODUsImp0aSI6IjY2MmI0NDEyZTQzZjRhYzA5NWFjMjM0MWM5ZTVlOGI0IiwidXNlcl9pZCI6Mn0.L-1QAefGT4F3fCb1QNYXTvXoUKX3xy0K2dCLLjmzjL0",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/library/authors/{id}/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"authors",
+						"{id}",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book API_Search",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODI5OTY0LCJpYXQiOjE3MDQ4MjMzODUsImp0aSI6ImJiMWVlMDZkYTI5YTQ1ZGZiOGUyMzRlOWE3OWJkYzM4IiwidXNlcl9pZCI6Mn0.5uDKLGAaT21wySWi2iqA5QcceVJtCbTNTdnqyZBDBwE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/library/books/?search=Updated Book ",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"books",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "Updated Book "
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Book API_Filter",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODI5OTY0LCJpYXQiOjE3MDQ4MjMzODUsImp0aSI6ImJiMWVlMDZkYTI5YTQ1ZGZiOGUyMzRlOWE3OWJkYzM4IiwidXNlcl9pZCI6Mn0.5uDKLGAaT21wySWi2iqA5QcceVJtCbTNTdnqyZBDBwE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/library/books/?publication_date__gte=2024-01-02&availability_status=false",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"books",
+						""
+					],
+					"query": [
+						{
+							"key": "publication_date__gte",
+							"value": "2024-01-02"
+						},
+						{
+							"key": "availability_status",
+							"value": "false"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Author API_Search",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzA0ODMzMjk3LCJpYXQiOjE3MDQ4MzE0NzgsImp0aSI6ImZjMWI0N2Q2MjU1MjQ0NTE4NjhjMjBkOTEyZjhkN2VlIiwidXNlcl9pZCI6Mn0.C1SumkaWXbNKurTK9DzZtVVL-JZd_tgzt1GN_ujtdKM",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8000/api/library/authors/?search=Author Name3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"library",
+						"authors",
+						""
+					],
+					"query": [
+						{
+							"key": "search",
+							"value": "Author Name3"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
